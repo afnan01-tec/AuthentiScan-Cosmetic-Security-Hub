@@ -1,0 +1,153 @@
+/* This is the full content of your ScanResults.css */
+
+/* Root color variables reused for consistency */
+:root {
+  --indigo-50: #eef2ff;
+  --indigo-100: #e0e7ff;
+  --indigo-200: #c7d2fe;
+  --indigo-400: #818cf8;
+  --indigo-500: #6366f1;
+  --indigo-600: #4f46e5;
+  --indigo-700: #4338ca;
+  --indigo-800: #3730a3;
+
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-500: #6b7280;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --red-500: #ef4444;
+  --yellow-500: #eab308;
+  --white: #ffffff;
+}
+
+/* Base layout */
+.result-page-container {
+  min-height: 100vh;
+  background-color: var(--indigo-50);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+/* Result card */
+.result-card {
+  background-color: var(--white);
+  border-radius: 1.5rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
+}
+
+/* Title */
+.result-card h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+/* Status box (Genuine / Fake / Uncertain) */
+.result-status {
+  font-size: 1.6rem;
+  font-weight: 700;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.result-status.genuine {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: var(--green-600);
+}
+
+.result-status.fake {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: var(--red-500);
+}
+
+.result-status.uncertain {
+  background-color: rgba(234, 179, 8, 0.15);
+  color: var(--yellow-500);
+}
+
+/* Info section (product + confidence) */
+.result-info {
+  background-color: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  text-align: left;
+}
+
+.result-info p {
+  color: var(--gray-700);
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+}
+
+.result-info span {
+  color: var(--gray-900);
+  font-weight: 600;
+}
+
+/* Button styling (matches OCRPage button) */
+.action-button {
+  background-color: var(--indigo-400);
+  color: var(--white);
+  border: none;
+  border-radius: 9999px;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  text-decoration: none; /* For the <a> tag */
+}
+
+.action-button:hover {
+  background-color: var(--indigo-500);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .result-card {
+    padding: 2rem 1.2rem;
+  }
+
+  .result-card h1 {
+    font-size: 1.5rem;
+  }
+
+  .result-status {
+    font-size: 1.3rem;
+    padding: 0.8rem;
+  }
+
+  .result-info {
+    padding: 1.2rem;
+  }
+
+  .action-button {
+    width: 100%;
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+}
