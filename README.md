@@ -96,5 +96,5 @@ This enables users to make **safe, informed, and confident cosmetic choices**.
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your-username/AuthentiScan.git
+git clone https://github.com/afnan01-tec/AuthentiScan-Cosmetic-Security-Hub.git
 cd AuthentiScan
