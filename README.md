@@ -97,4 +97,85 @@ This enables users to make **safe, informed, and confident cosmetic choices**.
 ### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/afnan01-tec/AuthentiScan-Cosmetic-Security-Hub.git
-cd AuthentiScan
+cd AuthentiScan-Cosmetic-Security-Hub
+
+---
+
+###2️⃣ Supabase Configuration
+
+Create a .env file inside the system/ folder:
+
+REACT_APP_SUPABASE_URL=your_supabase_project_url
+REACT_APP_SUPABASE_ANON_KEY=your_supabase_public_anon_key
+
+
+Set up the following tables in Supabase:
+
+ingredients
+
+posts
+
+Import the ingredient CSV file into the ingredients table.
+
+3️⃣ Frontend Setup (React)
+cd system
+npm install
+npm start
+
+
+Runs at 👉 http://localhost:3000
+
+4️⃣ Backend Setup (Flask – Counterfeit Detector)
+cd backend
+python -m venv venv
+source venv/bin/activate     # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python app.py
+
+
+Runs at 👉 http://localhost:5000
+
+💻 Usage
+
+Open http://localhost:3000
+
+Sign up or log in via Supabase Authentication
+
+Navigate to the Dashboard
+
+Use:
+
+Ingredient Scanner
+
+Counterfeit Detector
+
+Health Logs & Community Reviews
+
+👥 Team
+Name	Role
+Afnan M	Full-Stack Development, OCR Logic, System Architecture
+Team Member 2	Frontend UI/UX & State Management
+Team Member 3	Supabase Integration & Database Design
+🎓 Academic Supervision
+
+Project Guide: [Guide Name]
+
+Department: [Department Name]
+
+Institution: [College / University Name]
+
+🔮 Future Roadmap
+
+Advanced OCR using Google Vision API
+
+Manufacturer verification module
+
+Personalized allergy & sensitivity alerts
+
+Mobile app using React Native
+
+Cryptographic product authenticity checks
+
+📄 License
+
+This project is licensed under the MIT License.
