@@ -77,3 +77,16 @@ The ingredient data (names, functions, safety levels, and warnings) is managed i
 ```bash
 git clone [Your Repository URL]
 cd AuthentiScan
+
+. Configure Supabase (Database & Auth)Step A: Get CredentialsYou need your Supabase Project URL and Public Anon Key (from src/supabaseClient.js).Step B: Update ConfigurationFor security and best practices, replace the hardcoded keys in src/supabaseClient.js with environment variables.Step C: Database InitializationSet up your Supabase project. You must create the ingredients and posts tables, then import the provided CSV file into the ingredients table.3. Frontend Setup (React)Bash# Install Node dependencies
+npm install 
+
+# Run the React application
+npm start 
+The application will launch on http://localhost:3000.4. Backend Hook Setup (Flask/Counterfeit Detector)The Counterfeit Detector feature requires a backend server running on port 5000 to process the image:Step A: Backend EnvironmentSet up a minimal Python environment and install Flask.Bash# In a new terminal:
+mkdir counterfeit-api-mock
+cd counterfeit-api-mock
+python -m venv venv
+source venv/bin/activate
+pip install Flask
+Step B: Run Mock ServerCreate a Python file (app.py) with a Flask route that handles POST /compare and returns a dummy JSON response in the format expected by the frontend (e.g., {"match": "Genuine", "confidence": 95.21}).💻 Usage & AccessOnce both the React frontend and the Flask backend hook are running, you can access the application at http://localhost:3000.Authentication: Users can sign up and log in using email/password via the Supabase authentication flow.Key Route: Access the main features via the Dashboard (/dashboard).👥 The TeamThis project was designed and developed by a dedicated team of student developers.NameRole / Focus[Your Name][e.g., Full-Stack Development, Core Architecture, OCR Logic][Team Member Name 2][e.g., Frontend Design & UX, State Management][Team Member Name 3][e.g., Supabase Integration, Authentication, Database Schema]🎓 Supervision & GuidanceProject Guide: [Name and Title of your Guide]Department: [Name of Department and School/University]🔮 Future RoadmapThe current system is a robust proof-of-concept for consumer safety. We plan to expand AuthentiScan into a more feature-rich platform with these key features:Advanced OCR Parsing: Integrating a more powerful text extraction service (e.g., Google Vision API) for superior quality and better handling of complex packaging layouts.Manufacturer Verification Module: Implementing a system for product manufacturers to register their official products, allowing the Counterfeit Detector to perform a cryptographic check against a verified database.Allergy and Sensitivity Profiles: Allowing authenticated users to define personal allergen profiles and cross-reference them directly against scanned ingredients, providing instant, personalized risk alerts.Mobile App Development: Porting the React application to React Native to utilize native camera capabilities and offline data access for faster scanning.
