@@ -77,8 +77,9 @@ The ingredient data (names, functions, safety levels, and warnings) is managed i
 ```bash
 git clone [Your Repository URL]
 cd AuthentiScan
+---
 
-. Configure Supabase (Database & Auth)Step A: Get CredentialsYou need your Supabase Project URL and Public Anon Key (from src/supabaseClient.js).Step B: Update ConfigurationFor security and best practices, replace the hardcoded keys in src/supabaseClient.js with environment variables.Step C: Database InitializationSet up your Supabase project. You must create the ingredients and posts tables, then import the provided CSV file into the ingredients table.3. Frontend Setup (React)Bash# Install Node dependencies
+###Configure Supabase (Database & Auth)Step A: Get CredentialsYou need your Supabase Project URL and Public Anon Key (from src/supabaseClient.js).Step B: Update ConfigurationFor security and best practices, replace the hardcoded keys in src/supabaseClient.js with environment variables.Step C: Database InitializationSet up your Supabase project. You must create the ingredients and posts tables, then import the provided CSV file into the ingredients table.3. Frontend Setup (React)Bash# Install Node dependencies
 npm install 
 
 # Run the React application
