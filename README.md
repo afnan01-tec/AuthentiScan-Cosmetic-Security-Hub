@@ -182,3 +182,11 @@ This project is licensed under the MIT License. See LICENSE for details.
 ## Contact
 Project lead: Afnan M (afnan01-tec)
 For questions or help setting up Supabase, OCR tuning, or the Flask verification endpoint — open an issue or contact the maintainer.
+
+---
+
+🎓 Supervision & Guidance
+Project Guide: Smt.Savitha Gopal (Assistant Professor,Dept. of Computer Science)
+Head of Department:Dr.Sangeetha J(Dept. of Computer Science,Amrita School of Arts and Sciences.Kochi)
+
+Submitted in partia; fulfillment of the requirements for the degree of Bachelor of Computer Applications(Data SCience ) at Amrita Vishwa Vidyapeetham ,Kochi Campus
