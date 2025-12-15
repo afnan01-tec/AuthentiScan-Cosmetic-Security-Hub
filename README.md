@@ -1,181 +1,184 @@
-<div align="center">
+# 🔎 AuthentiScan — Cosmetic Security Hub
 
-# 🔎 AuthentiScan – Cosmetic Security Hub
+Verify your beauty. Scan for safety.
 
-**Verify Your Beauty. Scan for Safety.**
-
-An integrated web application empowering consumers with **product authenticity verification**, **ingredient safety analysis**, and **personal health tracking**.
-
-![Status](https://img.shields.io/badge/Status-Active_Development-brightgreen)
-![Tech](https://img.shields.io/badge/Stack-React_|_Supabase_|_Flask_|_Tesseract.js-indigo)
-![License](https://img.shields.io/badge/License-MIT-blue)
-
-</div>
+[![Status](https://img.shields.io/badge/Status-Active_Development-brightgreen)](https://github.com/afnan01-tec/AuthentiScan-Cosmetic-Security-Hub)
+[![Tech](https://img.shields.io/badge/Stack-React_|_Supabase_|_Flask_|_Tesseract.js-indigo)]()
+[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 
 ---
 
-## 📌 Abstract
-
-**AuthentiScan** is a consumer-focused platform designed to tackle two major problems in the cosmetic industry:
-
-- 🚫 Counterfeit cosmetic products  
-- ⚠️ Lack of ingredient transparency  
-
-The application functions as a **Cosmetic Security Hub** by combining:
-- **Optical Character Recognition (OCR)**
-- **AI-based image verification hooks**
-- **Secure user data & health tracking**
-
-This enables users to make **safe, informed, and confident cosmetic choices**.
-
----
-
-## ✨ Key Features
-
-### 🔬 Smart OCR Ingredient Scanner
-- **OCR Extraction:** Uses **Tesseract.js** for client-side text extraction from cosmetic label images.
-- **Ingredient Safety Matching:** Extracted ingredients are matched against a **Supabase PostgreSQL database**.
-- **Risk Classification:** Ingredients are categorized with safety levels and warnings.
-- **Semantic Cleaning:** Custom JavaScript logic cleans OCR noise and normalizes ingredient names.
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Key Features](#key-features)
+- [Tech Stack & Architecture](#tech-stack--architecture)
+- [Data & Database](#data--database)
+- [Quick Start](#quick-start)
+  - [Prerequisites](#prerequisites)
+  - [Environment](#environment)
+  - [Frontend (React)](#frontend-react)
+  - [Backend (Flask)](#backend-flask)
+  - [Supabase Setup](#supabase-setup)
+- [Usage](#usage)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
 ---
 
-### ✅ AI-Powered Counterfeit Detector
-- **Image Upload Interface:** Users upload product images for authenticity checking.
-- **Backend AI Hook:** Images are sent to a Flask API (`POST /compare`) for simulated AI comparison.
-- **Verification Result:** Displays **Genuine / Fake / Uncertain** status with a confidence score.
+## Project Overview
+AuthentiScan is a user-focused web application that helps consumers:
+- Detect counterfeit cosmetic products (image-based checks).
+- Extract and analyze ingredient lists using OCR.
+- Track personal product usage and side effects with private logs.
+- Share public product reviews and community feedback.
+
+The system combines client-side OCR (Tesseract.js), a Flask backend for AI verification hooks, and Supabase for auth, storage, and database.
 
 ---
 
-### 💚 Health & Community Log
-- **Dual Tab System:**
-  - 🔒 **Private Health Log:** Track product usage and side effects.
-  - 🌍 **Community Reviews:** Public product reviews with ratings and photos.
-- **Supabase Powered:** Authentication, database storage, and image hosting.
+## Key Features
+- Smart OCR Ingredient Scanner
+  - Client-side OCR via Tesseract.js to extract text from product labels.
+  - Cleaning & normalization logic to reduce OCR noise.
+  - Ingredient lookup against a Supabase `ingredients` table with safety classifications.
+
+- AI-Powered Counterfeit Detector
+  - Image upload UI sends images to Flask endpoint (`POST /compare`).
+  - Backend returns a simulated authenticity verdict: Genuine / Fake / Uncertain, with confidence.
+
+- Health & Community Log
+  - Private health logs for individual users (side effects, usage).
+  - Public community reviews with photos and ratings.
+  - Authentication and storage handled by Supabase.
 
 ---
 
-## 🛠️ System Architecture
+## Tech Stack & Architecture
+- Frontend: React (Create React App)
+- Backend: Flask (simple AI hook / mock verification)
+- Database & Auth: Supabase (Postgres + Storage + Auth)
+- OCR: Tesseract.js (client-side)
 
-| Layer | Technology | Description |
-|------|-----------|-------------|
-| **Frontend** | React.js (CRA) | Single Page Application (SPA), UI, routing, state management |
-| **Backend & Database** | Supabase | PostgreSQL, Authentication, Storage |
-| **OCR Engine** | Tesseract.js | Client-side ingredient text extraction |
-| **AI Verification Hook** | Flask (Mock) | Image-based counterfeit detection |
-
----
-
-## 🗄️ Database & Data Sources
-
-### Ingredient Database
-- Stored in **Supabase PostgreSQL**
-- Table Name: `ingredients`
-- Fields include:
-  - Ingredient Name
-  - Function
-  - Safety Level
-  - Warning Notes
-
-#### Data Source
-- Provided as a **CSV file** (`ingredients_data.csv`)
-- Must be imported manually into Supabase
-
-📌 Used by `IngredientResults.js` to analyze OCR output.
+High level:
+- Frontend ↔ Supabase (auth, DB, storage)
+- Frontend ↔ Flask API (image verification)
+- Client-side OCR → frontend processing → ingredient lookup in Supabase
 
 ---
 
-## 🚀 Getting Started
+## Data & Database
+Ingredient data is provided as a CSV: `ingredients_data.csv`.
+Supabase table: `ingredients` (suggested fields)
+- id (uuid / serial)
+- name (text)
+- function (text)
+- safety_level (text) — e.g., safe / caution / hazardous
+- warning_notes (text)
+- created_at (timestamp)
+
+You must import the CSV into the `ingredients` table in your Supabase project.
+
+---
+
+## Quick Start
 
 ### Prerequisites
-- Node.js & npm
-- Python 3.x & pip
-- Supabase Account
+- Node.js (16+ recommended) and npm
+- Python 3.8+
+- pip
+- Supabase account & project
 
----
+### Environment
+Create a `.env` file inside the `system/` folder (frontend):
 
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/afnan01-tec/AuthentiScan-Cosmetic-Security-Hub.git
-cd AuthentiScan-Cosmetic-Security-Hub
-
----
-
-###2️⃣ Supabase Configuration
-
-Create a .env file inside the system/ folder:
-
+```
 REACT_APP_SUPABASE_URL=your_supabase_project_url
 REACT_APP_SUPABASE_ANON_KEY=your_supabase_public_anon_key
+```
 
+(Do not commit secrets to the repo.)
 
-Set up the following tables in Supabase:
+### Supabase Setup
+1. Create a Supabase project.
+2. Create the `ingredients` and `posts` tables (or use the SQL editor to run migrations).
+3. Import `ingredients_data.csv` into the `ingredients` table (Supabase UI -> Table -> Import CSV).
+4. Enable Storage if you want to host review photos.
 
-ingredients
+Suggested minimal SQL for `ingredients`:
 
-posts
+```sql
+create table if not exists ingredients (
+  id uuid default gen_random_uuid() primary key,
+  name text not null,
+  function text,
+  safety_level text,
+  warning_notes text,
+  created_at timestamptz default now()
+);
+```
 
-Import the ingredient CSV file into the ingredients table.
+### Frontend (React)
+From the project root:
 
-3️⃣ Frontend Setup (React)
+```bash
 cd system
 npm install
 npm start
+```
 
+App runs at: http://localhost:3000
 
-Runs at 👉 http://localhost:3000
+### Backend (Flask)
+From the project root:
 
-4️⃣ Backend Setup (Flask – Counterfeit Detector)
+```bash
 cd backend
 python -m venv venv
-source venv/bin/activate     # Windows: venv\Scripts\activate
+source venv/bin/activate       # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 python app.py
+```
 
+Flask API runs at: http://localhost:5000
+(Adjust host/port as needed.)
 
-Runs at 👉 http://localhost:5000
+---
 
-💻 Usage
+## Usage
+- Sign up or log in using Supabase Authentication.
+- Dashboard:
+  - Ingredient Scanner: Upload a label photo -> OCR extracts text -> ingredient lookup shows safety levels.
+  - Counterfeit Detector: Upload product images -> POST to `/compare` -> receive authenticity verdict and confidence.
+  - Health Logs & Community: Create private logs and public reviews with images.
 
-Open http://localhost:3000
+---
 
-Sign up or log in via Supabase Authentication
+## Roadmap (Suggested)
+- Replace mock AI hook with real ML model or external service.
+- Improve OCR accuracy (option to add Google Vision API).
+- Manufacturer verification module (data-driven).
+- Mobile app (React Native).
+- Cryptographic product authenticity checks (blockchain / signatures).
 
-Navigate to the Dashboard
+---
 
-Use:
+## Contributing
+Contributions are welcome. Suggested workflow:
+1. Fork the repo
+2. Create a feature branch: git checkout -b feat/your-feature
+3. Commit changes and open a PR describing the change and motivation
 
-Ingredient Scanner
+Please include tests where appropriate and keep environment secrets out of commits.
 
-Counterfeit Detector
+---
 
-Health Logs & Community Reviews
+## License
+This project is licensed under the MIT License. See LICENSE for details.
 
-👥 Team
-Name	Role
-Afnan M	Full-Stack Development, OCR Logic, System Architecture
-Team Member 2	Frontend UI/UX & State Management
-Team Member 3	Supabase Integration & Database Design
-🎓 Academic Supervision
+---
 
-Project Guide: [Guide Name]
-
-Department: [Department Name]
-
-Institution: [College / University Name]
-
-🔮 Future Roadmap
-
-Advanced OCR using Google Vision API
-
-Manufacturer verification module
-
-Personalized allergy & sensitivity alerts
-
-Mobile app using React Native
-
-Cryptographic product authenticity checks
-
-📄 License
-
-This project is licensed under the MIT License.
+## Contact
+Project lead: Afnan M (afnan01-tec)
+For questions or help setting up Supabase, OCR tuning, or the Flask verification endpoint — open an issue or contact the maintainer.
