@@ -95,7 +95,7 @@ Import steps:
 - Supabase account & project
 
 ### Environment
-Create a `.env` file inside the frontend `system/` folder (do not commit secrets):
+Create a `.env` file or supabaseClient.js file (as shown in project) inside the frontend `system/` folder (do not commit secrets):
 
 REACT_APP_SUPABASE_URL=your_supabase_project_url
 REACT_APP_SUPABASE_ANON_KEY=your_supabase_public_anon_key
